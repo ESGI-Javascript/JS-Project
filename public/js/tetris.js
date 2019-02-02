@@ -1,5 +1,6 @@
 import createCanvas from '/js/canvas.js';
 import {prop_access} from '/js/propAccess.js';
+import {type_check_v1, type_check_v2, type_check} from '/js/typeCheck.js';
 
 //Création de canvas et de la zone de jeu
 const screen = new createCanvas(document.getElementById('tetris'));
@@ -12,6 +13,10 @@ const tetrisMatrix = [
     [1, 1, 1],
     [0, 1, 0],
 ];
+
+function draw(){
+    drawTetrisMatrix(values.matrix, values.position);
+}
 
 //param : tetrisMatrix et décalage
 //fonction : dessiner la pièce
@@ -27,9 +32,11 @@ function drawTetrisMatrix(matrix, offset){
     });
 }
 
+
+
 const values = {
     position : {x: 5, y:5},
     matrix: tetrisMatrix,
 }
 
-drawTetrisMatrix(values.matrix, values.position);
+draw();
