@@ -1,0 +1,23 @@
+{
+  "name": "js-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "serve ./public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ESGI-Javascript/JS-Project.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ESGI-Javascript/JS-Project/issues"
+  },
+  "homepage": "https://github.com/ESGI-Javascript/JS-Project#readme",
+  "dependencies": {
+    "serve": "^10.1.1"
+  }
+}
