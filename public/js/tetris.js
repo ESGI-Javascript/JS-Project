@@ -32,11 +32,18 @@ function drawTetrisMatrix(matrix, offset){
     });
 }
 
+//afficher le score de la partie
+function updateScore() {
+    document.getElementById('score').innerText = values.score;
+}
+
 
 
 const values = {
     position : {x: 5, y:5},
     matrix: tetrisMatrix,
+    score: 0
 }
 
+updateScore();
 draw();
