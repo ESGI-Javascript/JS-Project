@@ -33,6 +33,7 @@ function drawTetrisMatrix(matrix, offset){
     });
 }
 
+
 //création de la pièce aléatoirement
 function playerReset() {
     /*const pieces = 'TJLOSZI';
@@ -40,9 +41,18 @@ function playerReset() {
     values.position.y = 0;*/
 }
 
+
+//afficher le score de la partie
+function updateScore() {
+    document.getElementById('score').innerText = values.score;
+}
+
+
 const values = {
     position : {x: 5, y:5},
     matrix: tetrisMatrix,
+    score: 0
 }
 
+updateScore();
 draw();
