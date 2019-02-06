@@ -17,6 +17,7 @@ const tetrisMatrix = [
 
 function draw(){
     drawTetrisMatrix(values.matrix, values.position);
+    updateScore();
 }
 
 //param : tetrisMatrix et décalage
@@ -47,12 +48,26 @@ function updateScore() {
     document.getElementById('score').innerText = values.score;
 }
 
+//event pour deplacer la piece
+document.addEventListener('keydown', event => {
+    if (event.key === "ArrowLeft") {
+        console.log("ArrowLeft");
+    } else if (event.key === "ArrowRight") {
+        console.log("ArrowRight");
+    } else if (event.key === "ArrowDown") {
+        console.log("ArrowDown");
+    } else if (event.key === "q") {
+        console.log("key q");
+    } else if (event.key === "d") {
+        console.log("key d");
+    }
+});
 
 const values = {
     position : {x: 5, y:5},
     matrix: tetrisMatrix,
     score: 0
-}
+};
 
 updateScore();
 draw();
