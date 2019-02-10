@@ -1,7 +1,7 @@
 import createCanvas from '/js/canvas.js';
-import {prop_access} from '/js/propAccess.js';
-import {type_check_v1, type_check_v2} from '/js/typeCheck.js';
-import {loadJSON, loadPieceShape} from '/js/loader.js'
+import {type_check_v1, type_check_v2, prop_access} from '/js/fonctionCours.js';
+import {loadJSON, loadPieceShape} from '/js/loader.js';
+import Pos from '/js/Pos.js';
 
 //Création de canvas et de la zone de jeu
 const screen = new createCanvas(document.getElementById('tetris'));
@@ -35,7 +35,7 @@ function drawTetrisMatrix(matrix, offset){
 
 
 //création de la pièce aléatoirement
-function playerReset() {
+function piecesRandom() {
     /*const pieces = 'TJLOSZI';
     values.matrix = createPiece(pieces[pieces.length * Math.random() | 0]);
     values.position.y = 0;*/
