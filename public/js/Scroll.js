@@ -1,3 +1,9 @@
+
+/*
+
+ */
+
+
 import Entity from '/js/Entity.js';
 import ControleFram from '/js/ControleFram.js';
 export default class Scroll{
@@ -29,37 +35,42 @@ export default class Scroll{
 			];
 		this.ControleFram = new ControleFram();
 		this.update = (time ) => {
-                const deltaTime = time - this.lastTime;    
-                this.dropCounter += deltaTime;
-                if (this.dropCounter > this.dropInterval) {
-                    entity.pos.increlementY();
-                    if (entity.collide()) {
-                        entity.pos.y--;
-                           entity.merge();
-                        entity.playerReset();
-                        entity.arenaSweep();
-                        entity.updateScore();
-                    }
-                    
-                    this.dropCounter=0;
-                }
-                this.lastTime = time;
-                this.draw(entity.arena, entity.matrix, entity.pos);            
-            
-            this.enqueue();
-        }
+			this.ControleFram.updateTimer()
+		    if (this.ControleFram.checkFps()) {
+			console.log(entity.pos)
+		    	const deltaTime = time - this.lastTime;	
+			    this.dropCounter += deltaTime;
+			    if (this.dropCounter > this.dropInterval) {
+			    	entity.pos.increlementY();
+			    	if (entity.collide()) {
+			    		entity.pos.y--;
+			       		entity.merge();
+			        	entity.playerReset();
+			        	entity.arenaSweep();
+				        entity.updateScore();
+				    }
+			    	
+			        this.dropCounter=0;
+			    }
+			    this.lastTime = time;
+			    this.draw(entity.arena, entity.matrix, entity.y, entity.x);
+			    this.ControleFram.adjustTimer();
+		    	
+		    }
+		    this.enqueue();
+		}
 	}
 
 	/*
 		la méthode regroupe toute les méthodes dont on a besoin pour déssiner nous carrés
 	 */
 
-	draw(arena, matrix, pos) {
+	draw(arena, matrix, entity.y, entity.x) {
 	    this.context.fillStyle = '#000';
 	    this.context.fillRect(0, 0, this.canvas.width, this.canvas.height);
 
 	    this.drawMatrix(arena, {x: 0, y: 0});
-	    this.drawMatrix(matrix, pos);
+	    this.drawMatrix(matrix, {entity.x: 0, entity.y: 0} );
 	}
 
 	/*
