@@ -8,6 +8,7 @@ const screen = new createCanvas(document.getElementById('tetris'));
 let canvas = prop_access(screen, 'area');
 let context = screen.context;
 
+
 //création de la pièce
 const tetrisMatrix = [
     [0, 0, 0],
@@ -16,6 +17,9 @@ const tetrisMatrix = [
 ];
 
 function draw(){
+    context.fillStyle = '#000';
+    context.fillRect(0, 0, canvas.width, canvas.height);
+
     drawTetrisMatrix(values.matrix, values.position);
     updateScore();
 }
@@ -69,5 +73,11 @@ const values = {
     score: 0
 };
 
+
+function update(time = 0) {
+    draw();
+    requestAnimationFrame(update);
+}
+
 updateScore();
-draw();
+update();
