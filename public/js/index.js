@@ -74,10 +74,14 @@ const values = {
 };
 
 
-function update(time = 0) {
-    draw();
-    requestAnimationFrame(update);
+function loadgame()
+{
+    const user = new Entity(0, 0,null , 0);
+    const scroll = new Scroll(0, 1000, 0,context, canvas, user);
+    user.updateScore();
+
+    user.playerReset();
+    scroll.start();
 }
 
-updateScore();
-update();
+loadgame();
