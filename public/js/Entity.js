@@ -6,10 +6,9 @@
  */
 
 export default class entity{
-	constructor(y, x ,  score, matrix)
+	constructor(pos ,  score, matrix)
 	{
-		this.y = y;
-		this.x = x;
+		this.pos = pos;
 		this.matrix= matrix;
 		this.score = score;
 		this.arena = this.createMatrix(12, 20);
@@ -50,10 +49,9 @@ export default class entity{
 	    }
 	}
 
-	setPos(y, x )
+	setPos(pos )
 	{
-		this.y = y;
-		this.x = x;
+        this.pos = pos;
 	}
 
 	/*
@@ -63,8 +61,7 @@ export default class entity{
 	    this.matrix.forEach((row, y) => {
 	        row.forEach((value, x) => {
 	            if (value !== 0) {
-	            	console.log(this.y)
-	                this.arena[y + this.y][x + this.x] = value;
+	                this.arena[y + this.pos.y][x + this.pos.x] = value;
 	            }
 	        });
 	    });
@@ -99,7 +96,7 @@ export default class entity{
 		this.updateScore();
 	}
 
-	updateScore(score) {
+	updateScore() {
 	    document.getElementById('score').innerText = this.score;
 	}
 	/*
@@ -107,15 +104,16 @@ export default class entity{
 	 */
 	collide() {
 	    const m = this.matrix;
-	    for (let y = 0; y < m.length; ++y) {
-	        for (let x = 0; x < m[y].length; ++x) {
-	            if (m[y][x] !== 0 &&
-	               (this.arena[y + this.y] &&
-	                this.arena[y + this.y][x + this.x]) !== 0) {
-	                return true;
-	            }
-	        }
-	    }
+        const o = this.pos;
+        for (let y = 0; y < m.length; ++y) {
+            for (let x = 0; x < m[y].length; ++x) {
+                if (m[y][x] !== 0 &&
+                    (this.arena[y + o.y] &&
+                        this.arena[y + o.y][x + o.x]) !== 0) {
+                    return true;
+                }
+            }
+        }
 	    return false;
 	}
 

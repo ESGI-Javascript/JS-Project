@@ -37,7 +37,6 @@ export default class Scroll{
 		this.update = (time ) => {
 			this.ControleFram.updateTimer()
 		    if (this.ControleFram.checkFps()) {
-			console.log(entity.pos)
 		    	const deltaTime = time - this.lastTime;	
 			    this.dropCounter += deltaTime;
 			    if (this.dropCounter > this.dropInterval) {
@@ -53,7 +52,7 @@ export default class Scroll{
 			        this.dropCounter=0;
 			    }
 			    this.lastTime = time;
-			    this.draw(entity.arena, entity.matrix, entity.y, entity.x);
+			    this.draw(entity.arena, entity.matrix, entity.pos);
 			    this.ControleFram.adjustTimer();
 		    	
 		    }
@@ -65,12 +64,12 @@ export default class Scroll{
 		la méthode regroupe toute les méthodes dont on a besoin pour déssiner nous carrés
 	 */
 
-	draw(arena, matrix, entity.y, entity.x) {
+	draw(arena, matrix, pos) {
 	    this.context.fillStyle = '#000';
 	    this.context.fillRect(0, 0, this.canvas.width, this.canvas.height);
 
 	    this.drawMatrix(arena, {x: 0, y: 0});
-	    this.drawMatrix(matrix, {entity.x: 0, entity.y: 0} );
+	    this.drawMatrix(matrix, pos);
 	}
 
 	/*
