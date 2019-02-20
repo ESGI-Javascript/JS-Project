@@ -4,8 +4,8 @@ export default class Router{
   		this.routes = {};
 	}
 
-	addroute(pathName, path, idview) {
-      this.routes[pathName] = {path: path, idview :idview };
+	addroute(pathName, path, idview, controller) {
+      this.routes[pathName] = {path: path, idview :idview, controller : controller };
   }
 
   remove(name) {
@@ -15,7 +15,20 @@ export default class Router{
 
 	navigate(pathName)
 	{
-      this.ajaxCall(this.routes[pathName].path,this.routes[pathName].idview);
+    return new Promise((resolve, reject) => { resolve(this.ajaxCall(this.routes[pathName].path,this.routes[pathName].idview)) })
+    .then(this.loader(pathName));
+
+
+/*
+
+      var promise = this.ajaxCall(this.routes[pathName].path,this.routes[pathName].idview);
+      promise.then(function(response) {
+      alert(response);
+  }).finally(function(response) {
+      alert(response);
+  })
+;*/
+     
 	}
 
   router()
@@ -26,8 +39,8 @@ export default class Router{
 
   ajaxCall(Url,idview)
   { 
-    let xmlhttp = new XMLHttpRequest();
-
+     let xmlhttp = new XMLHttpRequest();
+      
        xmlhttp.onreadystatechange = function() {
           if (xmlhttp.readyState == XMLHttpRequest.DONE) {   
              if (xmlhttp.status == 200) {
@@ -44,6 +57,11 @@ export default class Router{
 
       xmlhttp.open("GET", Url, true);
       xmlhttp.send()
+    
   }
-
+  loader(id)
+  {
+    console.log(this.routes[id].controller.load())
+    this.routes[id].controller.load();
+  }
 }
