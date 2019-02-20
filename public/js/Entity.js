@@ -73,7 +73,6 @@ export default class entity{
 	    outer: for (let y = this.arena.length -1; y > 0; --y) {
 	        for (let x = 0; x < this.arena[y].length; ++x) {
 	            if (this.arena[y][x] === 0) {
-	                console.log(this.arena[y][x])
 	                continue outer;
 	            }
 	        }

@@ -1,9 +1,3 @@
-
-/*
-
- */
-
-
 import Entity from '/js/Entity.js';
 import ControleFram from '/js/ControleFram.js';
 export default class Scroll{
