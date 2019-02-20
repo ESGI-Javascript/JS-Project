@@ -15,19 +15,13 @@ export default class Router{
 
 	navigate(pathName)
 	{
-    return new Promise((resolve, reject) => { resolve(this.ajaxCall(this.routes[pathName].path,this.routes[pathName].idview)) })
-    .then(this.loader(pathName));
+    /*-return new Promise((resolve, reject) => { resolve(this.ajaxCall(this.routes[pathName].path,this.routes[pathName].idview)) })
+    .finally(this.loader(pathName));*/
 
 
-/*
 
       var promise = this.ajaxCall(this.routes[pathName].path,this.routes[pathName].idview);
-      promise.then(function(response) {
-      alert(response);
-  }).finally(function(response) {
-      alert(response);
-  })
-;*/
+      promise.then(() => this.loader(pathName));   
      
 	}
 
@@ -39,12 +33,13 @@ export default class Router{
 
   ajaxCall(Url,idview)
   { 
-     let xmlhttp = new XMLHttpRequest();
+    return new Promise((resolve, reject) => { 
+        let xmlhttp = new XMLHttpRequest();
       
        xmlhttp.onreadystatechange = function() {
           if (xmlhttp.readyState == XMLHttpRequest.DONE) {   
              if (xmlhttp.status == 200) {
-                 document.getElementById(idview).innerHTML = xmlhttp.responseText;
+                 resolve(document.getElementById(idview).innerHTML = xmlhttp.responseText);
              }
              else if (xmlhttp.status == 400) {
                 alert('There was an error 400');
@@ -57,6 +52,7 @@ export default class Router{
 
       xmlhttp.open("GET", Url, true);
       xmlhttp.send()
+    })
     
   }
   loader(id)

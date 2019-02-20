@@ -18,8 +18,8 @@ export default class GameLoader
 	chargeView()
 	{
 		this.screen = new createCanvas(document.getElementById('tetris'));
-		this.canvas = prop_access(screen, 'area');
-		this.context = screen.context;
+		this.canvas = prop_access(this.screen, 'area');
+		this.context = this.screen.context;
 	}
 
 	load()
