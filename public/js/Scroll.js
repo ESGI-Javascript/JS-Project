@@ -39,7 +39,7 @@ export default class Scroll{
 			    	if (entity.collide()) {
 			    		entity.pos.y--;
 			       		entity.merge();
-			        	//entity.playerReset();
+			        	entity.playerReset();
 			        	entity.arenaSweep();
 				        entity.updateScore();
 				    }
@@ -85,7 +85,7 @@ export default class Scroll{
 	        row.forEach((value, x) => {
 	            if (value !== 0) {
 	                this.context.fillStyle = this.colors[value];
-	                this.context.fillRect(x +offset.x,
+	                this.context.fillRect(offset.x + x,
 	                                 y + offset.y,
 	                                 1, 1);
 	            }

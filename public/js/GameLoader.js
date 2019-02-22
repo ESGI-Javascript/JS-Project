@@ -25,7 +25,7 @@ export default class GameLoader
 	load()
 	{
 		this.chargeView();
-	    const pos = new Pos(5, 0);
+	    const pos = new Pos(0, 0);
 	    const user = new Entity(pos,0 , 0);
 	    const scroll = new Scroll(0, 1000, 0,this.context, this.canvas, user);
 	    user.playerReset();

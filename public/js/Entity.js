@@ -39,8 +39,8 @@ export default class entity{
             [0, 1, 0, 0],
             [0, 1, 0, 0],
         ];
-	    this.y = 0;
-	    this.x = (this.arena[0].length / 2 | 0) -
+	    this.pos.y = 0;
+	    this.pos.x = (this.arena[0].length / 2 | 0) -
 	                   (this.matrix[0].length / 2 | 0);
 	    if (this.collide()) {
 	        this.arena.forEach(row => row.fill(0));
