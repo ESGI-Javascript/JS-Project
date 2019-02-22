@@ -2,6 +2,6 @@ export default class Home
 {
 	load()
 	{
-		console.log("toto")
+		document.getElementById("homeindex").style.display = "none";
 	}
 }

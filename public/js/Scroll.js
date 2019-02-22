@@ -9,8 +9,9 @@ export default class Scroll{
 		requestAnimationFrame sans avoir tous les attributs à nul
 	 */
 	//
-	constructor(dropCounter, dropInterval,lastTime, context, canvas,entity)
+	constructor(dropCounter, dropInterval,lastTime, context, canvas, entity)
 	{
+
 		this.lastTime = lastTime;
 		this.dropInterval= dropInterval;
 		this.dropCounter = dropCounter;
@@ -38,7 +39,7 @@ export default class Scroll{
 			    	if (entity.collide()) {
 			    		entity.pos.y--;
 			       		entity.merge();
-			        	entity.playerReset();
+			        	//entity.playerReset();
 			        	entity.arenaSweep();
 				        entity.updateScore();
 				    }
@@ -84,31 +85,12 @@ export default class Scroll{
 	        row.forEach((value, x) => {
 	            if (value !== 0) {
 	                this.context.fillStyle = this.colors[value];
-	                this.context.fillRect(x + offset.x,
+	                this.context.fillRect(x +offset.x,
 	                                 y + offset.y,
 	                                 1, 1);
 	            }
 	        });
 	    });
-	}
-
-	/*
-		la méthode vérifier la collision entre les éléments envoyer en paramètre
-		celle-la commes les précédentes peuvent être sorti dans un fichier à part
-	 */
-	collide(arena, matrix, pos) {
-	    const m = matrix;
-	    const o = pos;
-	    for (let y = 0; y < m.length; ++y) {
-	        for (let x = 0; x < m[y].length; ++x) {
-	            if (m[y][x] !== 0 &&
-	               (arena[y + o.y] &&
-	                arena[y + o.y][x + o.x]) !== 0) {
-	                return true;
-	            }
-	        }
-	    }
-	    return false;
 	}
 
 	/*

@@ -14,10 +14,9 @@
         height: 90vh;
       }
       .playButton_on {
-          position: absolute;
-          top: 560px;
+           margin: 0 auto;
+           margin-top: 10px;
           left: 50%;
-          transform: translate(-50%, 0%);
           font-family: 'Baloo';
           cursor: pointer;
           background-color: #E9C013;
@@ -33,16 +32,15 @@
           z-index: 8;
           -webkit-transition: 2s;
           transition: 2s;
+
       }
 
       #nameSelector {
-          position: absolute;
+           margin: 0 auto;
           left: 50%;
-          top: 500px;
           background-color: #fff;
           width: 300px;
           height: 38px;
-          transform: translate(-50%, 0%);
           border-radius: 20px;
           z-index: 8;
       }
@@ -55,17 +53,38 @@
             font-family: 'Baloo', cursive;
             color: #4E5F80;
             font-size: 24px;
-            margin-left: 20px;
             text-align: center;
             z-index: 8;
         }
+        a{
+          text-decoration: blink;
+        }
+
+        ul
+        {
+          padding-left: 0px;
+          list-style-type: none;
+        }
+        li
+        {
+          margin: auto;
+          width: 240px;
+          height: 80px;
+          background-color: #E9C013;
+          font-size: 50px;
+          text-align: center;
+          line-height: 80px;
+          border-radius: 45px;
+          box-shadow: 0 0 0 rgba(204,169,44, 0.4);
+        }
+        
+
     </style>
     <script type="module" id="bt1"  src="/js/index.js"></script>
 </head>
 <body>
-    <ul>
-    <li><a href="#">Home</a></li>
-    <li><a href="#game">Page 1</a></li>
+  <ul>
+    <li><a href="#"  id="homeindex">Home</a></li>
   </ul>
   <div id="view"></div>
 </body>

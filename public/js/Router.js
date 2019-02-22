@@ -57,7 +57,6 @@ export default class Router{
   }
   loader(id)
   {
-    console.log(this.routes[id].controller.load())
     this.routes[id].controller.load();
   }
 }

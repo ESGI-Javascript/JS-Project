@@ -61,14 +61,17 @@ export default class entity{
 	    this.matrix.forEach((row, y) => {
 	        row.forEach((value, x) => {
 	            if (value !== 0) {
-	                this.arena[y + this.pos.y][x + this.pos.x] = value;
+	                this.arena[y + this.pos.y][ x + this.pos.x] = value;
 	            }
 	        });
 	    });
-	}
+	  }
+
+
 
 	// la méthode permet la suppression de ligne quand cette dernière est complete et rajoute les points
-	arenaSweep() {
+	arenaSweep() 
+	{
 	    let rowCount = 1;
 	    outer: for (let y = this.arena.length -1; y > 0; --y) {
 	        for (let x = 0; x < this.arena[y].length; ++x) {
@@ -108,7 +111,7 @@ export default class entity{
             for (let x = 0; x < m[y].length; ++x) {
                 if (m[y][x] !== 0 &&
                     (this.arena[y + o.y] &&
-                        this.arena[y + o.y][x + o.x]) !== 0) {
+                        this.arena[y + o.y][ x+ o.x ]) !== 0) {
                     return true;
                 }
             }
