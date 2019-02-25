@@ -1,3 +1,4 @@
+import {createPiece} from '/js/createPieces.js';
 /*
 	@pos : un tableau qui stock les coordonnées de l'élément en cours
 	@matrix : un tableau qui stock les informations concernant la piece en cours
@@ -33,12 +34,7 @@ export default class entity{
 
 	playerReset() {
 	    const pieces = 'TJLOSZI';
-	    this.matrix = [
-            [0, 1, 0, 0],
-            [0, 1, 0, 0],
-            [0, 1, 0, 0],
-            [0, 1, 0, 0],
-        ];
+	    this.matrix = createPiece(pieces[pieces.length * Math.random() | 0]);
 	    this.pos.y = 0;
 	    this.pos.x = (this.arena[0].length / 2 | 0) -
 	                   (this.matrix[0].length / 2 | 0);
@@ -101,6 +97,7 @@ export default class entity{
 	updateScore() {
 	    document.getElementById('score').innerText = this.score;
 	}
+
 	/*
 		La méthode permet de detecter les collisions
 	 */
