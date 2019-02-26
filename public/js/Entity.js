@@ -120,31 +120,35 @@ export default class entity{
 	    return false;
 	}
 
+    //permet de déplacer la piece de la gauche vers la droite -1 à gauche et 1 a droite
+    playerSlide(offset) {
+        this.pos.x += offset;
+        if (this.collide()) {
+            this.pos.x -= offset;
+        }
+    }
+
+    //permet de faire tomber la piece
+    playerDrop() {
+        this.pos.y++;
+        if (this.collide()) {
+            this.pos.y--;
+            this.merge();
+            this.playerReset();
+            this.arenaSweep();
+            this.updateScore();
+        }
+    }
+
     //event pour deplacer la piece
     movePiece() {
         document.addEventListener('keydown', event => {
             if (event.key === "ArrowLeft") {
-                console.log("ArrowLeft");
-                this.pos.x--;
-                if (this.collide()) {
-                    this.pos.x++;
-                }
+                this.playerSlide(-1);
             } else if (event.key === "ArrowRight") {
-                console.log("ArrowRight");
-                this.pos.x++;
-                if (this.collide()) {
-                    this.pos.x--;
-                }
+                this.playerSlide(1);
             } else if (event.key === "ArrowDown") {
-                console.log("ArrowDown");
-                this.pos.y++;
-                if (this.collide()) {
-                    this.pos.y--;
-                    this.merge();
-                    this.playerReset();
-                    this.arenaSweep();
-                    this.updateScore();
-                }
+                this.playerDrop();
             } else if (event.key === "q") {
                 console.log("key q");
                 this.pos.y = 0;
