@@ -101,6 +101,7 @@ export default class entity{
 	updateScore() {
 	    document.getElementById('score').innerText = this.score;
 	}
+
 	/*
 		La méthode permet de detecter les collisions
 	 */
@@ -118,6 +119,40 @@ export default class entity{
         }
 	    return false;
 	}
+
+    //event pour deplacer la piece
+    movePiece() {
+        document.addEventListener('keydown', event => {
+            if (event.key === "ArrowLeft") {
+                console.log("ArrowLeft");
+                this.pos.x--;
+                if (this.collide()) {
+                    this.pos.x++;
+                }
+            } else if (event.key === "ArrowRight") {
+                console.log("ArrowRight");
+                this.pos.x++;
+                if (this.collide()) {
+                    this.pos.x--;
+                }
+            } else if (event.key === "ArrowDown") {
+                console.log("ArrowDown");
+                this.pos.y++;
+                if (this.collide()) {
+                    this.pos.y--;
+                    this.merge();
+                    this.playerReset();
+                    this.arenaSweep();
+                    this.updateScore();
+                }
+            } else if (event.key === "q") {
+                console.log("key q");
+                this.pos.y = 0;
+            } else if (event.key === "d") {
+                console.log("key d");
+            }
+        });
+    }
 
 
 }
