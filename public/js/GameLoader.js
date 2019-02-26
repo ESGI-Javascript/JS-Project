@@ -29,6 +29,7 @@ export default class GameLoader
 	    const user = new Entity(pos,0 , 0);
 	    const scroll = new Scroll(0, 1000, 0,this.context, this.canvas, user);
 	    user.playerReset();
+	    user.movePiece();
 	    user.updateScore();
 	    document.getElementById("homeindex").style.display = "block";
 	    scroll.start();
