@@ -88,6 +88,29 @@ export default class entity{
 	        rowCount *= 2;
     	}
 	}
+
+	//la methode permet la rotation de la matrice qui contient la piece en changeant les éléments de position
+    rotate(matrix, dir) {
+        for (let y = 0; y < matrix.length; ++y) {
+            for (let x = 0; x < y; ++x) {
+                //destructuration swapping
+                [
+                    matrix[x][y],
+                    matrix[y][x],
+                ] = [
+                    matrix[y][x],
+                    matrix[x][y],
+                ];
+            }
+        }
+        //transpose les elements de la matrice
+        if (dir > 0) {
+            matrix.forEach(row => row.reverse());
+        } else {
+            matrix.reverse();
+        }
+    }
+
 	/*
 		La méthode permet de relancer une nouvelle partie
 	 */
@@ -140,6 +163,22 @@ export default class entity{
         }
     }
 
+    //permet la rotation de la piece en fonction de la direction voulu
+    playerRotate(dir) {
+        const pos = this.pos.x;
+        let offset = 1;
+        this.rotate(this.matrix, dir);
+        while (this.collide()) {
+            this.pos.x += offset;
+            offset = -(offset + (offset > 0 ? 1 : -1));
+            if (offset > this.matrix[0].length) {
+                this.rotate(this.matrix, -dir);
+                this.pos.x = pos;
+                return;
+            }
+        }
+    }
+
     //event pour deplacer la piece
     movePiece() {
         document.addEventListener('keydown', event => {
@@ -150,13 +189,10 @@ export default class entity{
             } else if (event.key === "ArrowDown") {
                 this.playerDrop();
             } else if (event.key === "q") {
-                console.log("key q");
-                this.pos.y = 0;
+                this.playerRotate(-1);
             } else if (event.key === "d") {
-                console.log("key d");
+                this.playerRotate(1);
             }
         });
     }
-
-
 }
