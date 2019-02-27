@@ -77,7 +77,7 @@ export default class entity{
 	        }
 
 	        const row = this.arena.splice(y, 1)[0].fill(0);
-	        arena.unshift(row);
+	        this.arena.unshift(row);
 	        ++y;
 
 	        this.score += rowCount * 10;
