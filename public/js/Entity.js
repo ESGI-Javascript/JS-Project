@@ -6,7 +6,7 @@ import {createPiece} from '/js/createPieces.js';
 	@arena: table qui renferme l'ensemble des élèments concernant la zone de jeu
  */
 
-export default class entity{
+export default class Entity{
 	constructor(pos ,  score, matrix)
 	{
 		this.pos = pos;
