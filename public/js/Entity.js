@@ -7,8 +7,9 @@ import {createPiece} from '/js/createPieces.js';
  */
 
 export default class Entity{
-	constructor(pos ,  score, matrix)
+	constructor(pos ,  score, matrix, pseudo)
 	{
+		this.pseudo = pseudo;
 		this.pos = pos;
 		this.matrix= matrix;
 		this.score = score;
@@ -49,6 +50,11 @@ export default class Entity{
 	{
         this.pos = pos;
 	}
+	
+	setNamePlayer()
+   	{
+        document.getElementById("name").innerText= `Pseudo :  ${this.pseudo}.`;
+        }
 
 	/*
 		une fois une colision detecter ajouter le nouvelle élément dans la matrix pour qu'il soit pris en compte
