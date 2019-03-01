@@ -26,11 +26,12 @@ export default class GameLoader
 	{
 		this.chargeView();
 	    const pos = new Pos(0, 0);
-	    const user = new Entity(pos,0 , 0);
+	    const user = new Entity(pos,0 , 0, localStorage.getItem("name"));
 	    const scroll = new Scroll(0, 1000, 0,this.context, this.canvas, user);
 	    user.playerReset();
 	    user.movePiece();
 	    user.updateScore();
+	    user.setNamePlayer();
 	    document.getElementById("homeindex").style.display = "block";
 	    scroll.start();
 	}
